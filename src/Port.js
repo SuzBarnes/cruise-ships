@@ -1,6 +1,8 @@
 
-function Port(name){
-    this.name = name;
+class Port{
+    constructor (name){
+        this.name = name;
+};
 };
 
 module.exports = (Port);
