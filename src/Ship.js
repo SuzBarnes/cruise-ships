@@ -1,12 +1,18 @@
+
 function Ship(name) {
-    this.name = name;
-    this.startingPort = name;
+    this.name = name,
+    this.currentPort = name,
+    this.setSail = function () {
+        if (this.setSail) {
+            this.currentPort = false;
+        }
+    },
+
+    this.dock = function(port) {
+        this.currentPort = port;
+    }
 };
 
-Ship.prototype.setSail = function () {
-if (this.setSail) {
-    this.startingPort = false;
-}
-};
 
-module.exports = Ship;
+
+module.exports = (Ship)
