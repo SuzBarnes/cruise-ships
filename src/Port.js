@@ -22,4 +22,4 @@ removeShip(ship){
 
 }
 };
-module.exports = (Port);
+module.exports = Port;
