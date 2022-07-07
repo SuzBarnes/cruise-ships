@@ -1,11 +1,11 @@
 
-class Ship {
+    class Ship {
     constructor(itinerary){
         this.itinerary = itinerary;
         this.currentPort = itinerary.ports[0];
         this.previousPort = null;
         this.currentPort.addShip(this);
-    }
+    };
 
 
     setSail(){
@@ -31,4 +31,8 @@ class Ship {
 };
 
 
-module.exports = (Ship)
+if(typeof module !== 'undefined' && module.exports) {
+    module.exports = Ship;
+} else {
+    window.Ship = Ship;
+}

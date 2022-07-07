@@ -1,4 +1,5 @@
 
+
 class Port{
     constructor (name){
         this.name = name;
@@ -19,7 +20,11 @@ removeShip(ship){
             this.ships.splice(indexOfShipToRemove, 1);
         };
         return this.ships;
-
-}
+    };
 };
-module.exports = Port;
+if (typeof module !== 'undefined' && module.exports){
+    module.exports = Port;
+} else {
+    window.Port = Port;
+};
+

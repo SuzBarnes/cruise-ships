@@ -7,7 +7,8 @@ class Controller {
 
        document.querySelector('#sailbutton').addEventListener('click', () => {
         this.setSail();
-       });
+        this.dock();
+       })
 
     };
 
@@ -52,16 +53,32 @@ class Controller {
             backgroundIndex += 1;
         }, 1000);
     };
-
+    
+    renderMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.id = 'message';
+        messageElement.innerHTML = message;
+        
+        const viewport = document.querySelector('#viewport');
+        viewport.appendChild(messageElement);
+    
+       setTimeout(() => {
+            viewport.removeChild(messageElement);
+        }, 2000)
+    }
     setSail() {
         const ship = this.ship;
-        
+console.log(ship);
         const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
         const nextPortIndex = currentPortIndex + 1;
+
+        
+
         const nextPortElement = document.querySelector(`[data-port-index = '${nextPortIndex}']`);
+
         
         const shipElement = document.querySelector('#ship');
-
+        
         const sailInterval = setInterval (() => {
             const shipLeft = parseInt(shipElement.style.left, 10);
             if (shipLeft === (nextPortElement.offsetLeft - 32)){
@@ -71,30 +88,18 @@ class Controller {
             };
             shipElement.style.left = `${shipLeft + 1 }px`;
         }, 20);
-
+        
         if(!nextPortElement) {
             this.renderMessage(`You are at your final destination. We hope you had a pleasant trip.`);
         } 
-        else {
-            this.renderMessage(`Now departing ${ship.currentPort.name}!`) 
-    } 
+        console.log(ship.currentPort.name);
+            this.renderMessage(`Now departing ${ship.currentPort.name}!`)   
+        };
 
-    if (ship.dock()){`Welcome to ${ship.currentPort.name}!`};
-};
-    
-
-    renderMessage(message) {
-        const messageElement = document.createElement('div');
-        messageElement.id = 'message';
-        messageElement.innerHTML = message;
-        
-        const viewport = document.querySelector('#viewport');
-        viewport.appendChild(messageElement);
-
-        setTimeout(() => {
-            viewport.removeChild(messageElement);
-        }, 3000)
-}
+        dock() {
+        console.log(ship);
+            this.renderMessage(`Welcome to ${ship.currentPort.name}!`)
+        };
 
     displayPorts(){
         this.ship = ship;
@@ -106,9 +111,14 @@ class Controller {
         portMessageElement.id = 'portMessage';
         portMessageElement.innerHTML = portMessage;
 
-        const viewport = document.querySelectory('#viewport');
-        viewport.appendChild(portMessageElement);
-    }
+        const currentPort = document.querySelectory('#currentPort');
+        currentPort.appendChild(portMessageElement);
+
+        const nextPort = document.querySelector('#nextPort');
+        nextPort.appendChild(portMessageElement);
+    };
+
+   
 
 };
     if(typeof module !== 'undefined' && module.exports) {
