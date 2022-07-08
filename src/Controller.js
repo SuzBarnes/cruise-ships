@@ -66,6 +66,8 @@ class Controller {
             viewport.removeChild(messageElement);
         }, 2000)
     }
+
+
     setSail() {
         const ship = this.ship;
         console.log(ship);
@@ -106,7 +108,9 @@ class Controller {
     if(!nextPortElement) {
         this.renderMessage(`You are at your final destination. We hope you had a pleasant trip.`);
     }     
+    setTimeout(() => {
     this.renderMessage(`Welcome to ${nextPort.name}!`)
+    }, 5000)
     };
     
     displayPorts(){
