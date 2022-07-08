@@ -68,14 +68,14 @@ class Controller {
     }
     setSail() {
         const ship = this.ship;
-console.log(ship);
+        console.log(ship);
         const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
         const nextPortIndex = currentPortIndex + 1;
-
         
-
+        
+        
         const nextPortElement = document.querySelector(`[data-port-index = '${nextPortIndex}']`);
-
+        
         
         const shipElement = document.querySelector('#ship');
         
@@ -93,14 +93,22 @@ console.log(ship);
             this.renderMessage(`You are at your final destination. We hope you had a pleasant trip.`);
         } 
         console.log(ship.currentPort.name);
-            this.renderMessage(`Now departing ${ship.currentPort.name}!`)   
-        };
-
-        dock() {
-        console.log(ship);
-            this.renderMessage(`Welcome to ${ship.currentPort.name}!`)
-        };
-
+        this.renderMessage(`Now departing ${ship.currentPort.name}!`)   
+    };
+    
+    dock() {
+    console.log(ship);
+        
+    const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+    const nextPortIndex = currentPortIndex + 1;
+    const nextPort = itinerary.ports[currentPortIndex + 1]; 
+    const nextPortElement = document.querySelector(`[data-port-index = '${nextPortIndex}']`);
+    if(!nextPortElement) {
+        this.renderMessage(`You are at your final destination. We hope you had a pleasant trip.`);
+    }     
+    this.renderMessage(`Welcome to ${nextPort.name}!`)
+    };
+    
     displayPorts(){
         this.ship = ship;
         this.headsUpDisplay(`Current Port: ${ship.currentPort.name} /n Next Port: ${ship.nextPort.name}`);
