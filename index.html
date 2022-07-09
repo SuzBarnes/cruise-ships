@@ -14,15 +14,25 @@
 
 </head>
 <body>
-  <p> Current Port: <br />
-      Next Port:
+  <div id="currentport"> Current Port: </div>
+     <div id="nextport">Next Port: </div>
   
-  </p>
+  
    <div id="viewport">
       <div id ="ports"> 
       </div>
       <div id = "ship"></div>
       <button id = "sailbutton">Set Sail!</button>
+      <form id="addportform">
+        <fieldset>
+          <label for ="addport">Enter Port Name: </label>
+          <br />
+          <input id="addport" type="text" name ="in">
+          <br />
+          <button type="submit">Add
+          </button>
+        </fieldset>
+      </form>
   
     </div> 
     
@@ -33,13 +43,11 @@
    <script src = "src/Ship.js"></script>
 
    <script>
-     const itinerary = new Itinerary ([
-           new Port ('Airlie Beach'),
-           new Port ('Lisbon'),
-           new Port ('Reykjavik'),
-     ]);
+    
+     const itinerary = new Itinerary([
 
-     const ship = new Ship(itinerary);
+     ]);
+     const ship = new Ship();
      const controller = new Controller(ship);
 
    controller.renderPorts(itinerary.ports);

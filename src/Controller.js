@@ -10,6 +10,9 @@ class Controller {
         this.dock();
        })
 
+       document.querySelector('#addport').addEventListener('submit',
+        this.addToItinerary());
+
     };
 
     renderPorts(ports) {
@@ -74,8 +77,6 @@ class Controller {
         const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
         const nextPortIndex = currentPortIndex + 1;
         
-        
-        
         const nextPortElement = document.querySelector(`[data-port-index = '${nextPortIndex}']`);
         
         
@@ -105,33 +106,34 @@ class Controller {
     const nextPortIndex = currentPortIndex + 1;
     const nextPort = itinerary.ports[currentPortIndex + 1]; 
     const nextPortElement = document.querySelector(`[data-port-index = '${nextPortIndex}']`);
+    
     if(!nextPortElement) {
         this.renderMessage(`You are at your final destination. We hope you had a pleasant trip.`);
+        this.headsUpDisplay(`Current Port: ${currentPort.name}`);
+        this.headsUpDisplay(`Next Port: Null`);
     }     
     setTimeout(() => {
     this.renderMessage(`Welcome to ${nextPort.name}!`)
     }, 5000)
     };
     
-    displayPorts(){
-        this.ship = ship;
-        this.headsUpDisplay(`Current Port: ${ship.currentPort.name} /n Next Port: ${ship.nextPort.name}`);
-    }
 
-    headsUpDisplay(portMessage) {
-        const portMessageElement = document.createElement ('div');
-        portMessageElement.id = 'portMessage';
-        portMessageElement.innerHTML = portMessage;
+    headsUpDisplay() {
+        const currentPortDisplayElement = document.createElement('div');
+        currentPortDisplayElement.id = 'currentPortDisplay';
+        currentPortDisplayElement.innerHTML = this.currentPort;
+        
+        const nextPortDisplayElement = document.createElement('div');
+        nextPortDisplayElement.id = 'nextPortDisplay';
+        nextPortDisplayElement.innerHTML = this.nextPort;
 
-        const currentPort = document.querySelectory('#currentPort');
-        currentPort.appendChild(portMessageElement);
-
-        const nextPort = document.querySelector('#nextPort');
-        nextPort.appendChild(portMessageElement);
+        const viewport = document.querySelector('#viewport');
+        viewport.appendChild(currentPortDisplayElement, nextPortDisplayElement);
     };
-
-   
-
+    addToItinerary(){
+        const itinerary = new Itinerary ([        ]);
+        itinerary.push();
+    };
 };
     if(typeof module !== 'undefined' && module.exports) {
         module.exports = Controller;
