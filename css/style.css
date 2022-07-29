@@ -15,7 +15,7 @@ html, body {
      }
 
 #viewport {
-    width: 800px;
+    width: 640px;
     height: 256px;
     position: relative;
     overflow-x: auto;
@@ -74,18 +74,4 @@ html, body {
     color: navy;
     background-color:white;
     text-align: center;
-
-}
-
-#addportform {
-    font-family: 'Damion', cursive;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    text-align: left;
-}
-
-button{
-    background-color:gold;
-    width: 100%;
-}
+};
